@@ -1,7 +1,8 @@
-import './App.css';
 import React from 'react';
-import Reservations from '../Components/Reservations/Reservations';
 import { useState, useEffect } from 'react'
+import './App.css';
+import Reservations from '../Components/Reservations/Reservations';
+import Form from '../Components/Form/Form';
 
 function App() {
 
@@ -18,12 +19,16 @@ function App() {
   useEffect(() => {
     getReservations()
   },[])
+
+  const addReservation = (newReservation) => {
+    setReservations([...reservations, newReservation])
+  }
   
   return (
     <div className="App">
       <h1 className='app-title'>Turing Cafe Reservations</h1>
       <div className='reservation-form'>
-        <h2>Form Container</h2>
+        <Form addReservation={addReservation} />
       </div>
       <div className='reservation-container'>
         <Reservations reservations={reservations} />  
