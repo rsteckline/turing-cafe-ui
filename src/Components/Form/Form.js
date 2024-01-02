@@ -9,6 +9,12 @@ const Form = ({addReservation}) => {
 
 const enterReservation = (event) => {
   event.preventDefault()
+
+  if (!name || !date || !time || !number) {
+    alert('Please fill in all fields');
+    return;
+  }
+
   const newReservation = {
     id: Date.now(),
     name,
